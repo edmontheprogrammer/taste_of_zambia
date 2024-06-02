@@ -1,6 +1,8 @@
 <h1>Order a Shawarma</h1>
 
-<form>
-  <label for="">Ingredient 1:</label>
-  <input id="ingredient1" />
+<h2>{{ note }}</h2>
+
+<form action="{% url 'order' %}" method="post">
+  {% csrf_token %} {{ shawarmaform }}
+  <input type="submit" value="Order Shawarma" />
 </form>
