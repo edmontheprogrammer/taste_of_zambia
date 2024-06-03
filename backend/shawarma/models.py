@@ -25,3 +25,6 @@ class Shawarma(models.Model):
     # In other words, Both objects in the "Shawaram" model and the "Size" model
     # will be removed from the database.
     size = models.ForeignKey(Size, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.ingredient1
