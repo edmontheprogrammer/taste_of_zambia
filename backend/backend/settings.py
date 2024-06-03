@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Installed Apps by Edmon
     "shawarma",
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
