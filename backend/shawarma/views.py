@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .forms import ShawarmaForm
 from .forms import MultipleShawarmaForm
 from django.forms import formset_factory
+from .models import Shawarma
 # Create your views here.
 
 
@@ -17,12 +18,21 @@ def order(request):
         filled_form = ShawarmaForm(request.POST)
         if filled_form.is_valid():
             # This line is saving the Model Form into the database: "filled_form.save()"
-            filled_form.save()
+            created_shawarma = filled_form.save()
+            # This line is getting the primary key for the created shawarma, "created_shawarma"
+            created_shawarma_pk = created_shawarma.id
             note = "Thanks for ordering! Your %s %s and %s shawarma is on its way!" % (filled_form.cleaned_data['size'],
                                                                                        filled_form.cleaned_data['ingredient1'],
                                                                                        filled_form.cleaned_data['ingredient2'],)
-            new_form = ShawarmaForm()
-            return render(request, "shawarma/order.html", {'shawarmaform': new_form, 'note': note, 'multiple_form': multiple_form})
+            filled_form = ShawarmaForm()
+        else:
+            created_shawarma_pk = None
+            note = "Shawarma has failed. Try again."
+        return render(request, "shawarma/order.html", {'created_shawarma_pk': created_shawarma_pk,
+                                                       'shawarmaform': filled_form,
+                                                       'note': note,
+                                                       'multiple_form': multiple_form})
+
     else:
         form = ShawarmaForm()
         return render(request, "shawarma/order.html", {'shawarmaform': form, 'multiple_form': multiple_form})
@@ -48,3 +58,17 @@ def shawarmas(request):
         return render(request, 'shawarma/shawarmas.html', {'note': note, 'formset': formset})
     else:
         return render(request, 'shawarma/shawarmas.html', {'formset': formset})
+
+
+def edit_order(request, pk):
+    shawarma = Shawarma.objects.get(pk=pk)
+    form = ShawarmaForm(instance=shawarma)
+    if request.method == 'POST':
+        filled_form = ShawarmaForm(request.POST, instance=shawarma)
+        if filled_form.is_valid():
+            filled_form.save()
+            note = "Order has been updated."
+            form = filled_form
+            return render(request, 'shawarma/edit_order.html', {'note': note, 'shawarmaform': form, 'shawarma': shawarma})
+
+    return render(request, 'shawarma/edit_order.html', {'shawarmaform': form, 'shawarma': shawarma})

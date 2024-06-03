@@ -1,0 +1,12 @@
+<h1>Edit Shawarma</h1>
+
+<h2> {{ note }} </h2>
+
+<form action="{% url 'edit-order' shawarma.id %}" method="post">
+    {% csrf_token %} {{ shawarmaform.as_p }}
+    <input type="submit" value="Edit Shawarma" />
+</form>
+  
+  <br />
+  <br />
+  

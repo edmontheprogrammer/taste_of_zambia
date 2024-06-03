@@ -1,11 +1,14 @@
 <h1>Order a Shawarma</h1>
 
 <h2>{{ note }}</h2>
+{% if created_shawarma_pk %}
+<a href="{% url 'edit-order' created_shawarma_pk %}">Edit Your Order </a> 
+{% endif %}
 
 {% comment %} # "enctype='multipart/form-data' " is requried to allow users to
 unload files such as "images", # "photos", "word documents", "PDF documents" and
 others on the form {% endcomment %}
-<form action="{% url 'order' %}" method="post">
+<form action="{% url 'order' %}" method="post" novalidate>
   {% csrf_token %} {{ shawarmaform.as_p }}
   <input type="submit" value="Order Shawarma" />
 </form>
