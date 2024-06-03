@@ -72,7 +72,7 @@ class ShawarmaForm(forms.ModelForm):
         model = Shawarma
         # "fields" is used displaying the followling fields from the "Shawarma" model
         # class that we created in the .model file.
-        fields = ['ingredient1', 'ingredient2', 'size']
+        fields = '__all__'
         labels = {
             'ingredient1': 'Ingredient 1',
             'ingredient2': 'Ingredient 2',

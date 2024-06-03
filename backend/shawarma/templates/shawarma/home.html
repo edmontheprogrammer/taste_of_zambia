@@ -1,2 +1,10 @@
-<h1>Taste of Zambia</h1>
-<a href="{% url 'order' %}"> Order a shawarma </a>
+{% extends 'shawarma/base.html' %}
+ {% block 'content' %}
+
+ <h3> We make the best Shawarmas in Lusaka! </h3>
+ <div class="text-center">
+    {% load static %}
+    <img src="{% static 'shawarma_2.jpg' %}" class="img-fluid" alt="Taste of Zambia">
+ </div>
+
+{% endblock %}

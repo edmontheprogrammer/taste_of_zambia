@@ -16,6 +16,9 @@ class Size(models.Model):
 
 
 class Shawarma(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=100)
     ingredient1 = models.CharField(max_length=100)
     ingredient2 = models.CharField(max_length=100)
     # Linking the "Shawarma" model to the "Size" model
