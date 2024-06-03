@@ -72,3 +72,14 @@ def edit_order(request, pk):
             return render(request, 'shawarma/edit_order.html', {'note': note, 'shawarmaform': form, 'shawarma': shawarma})
 
     return render(request, 'shawarma/edit_order.html', {'shawarmaform': form, 'shawarma': shawarma})
+
+
+def about(request):
+    return render(request, "shawarma/about.html")
+
+def contact(request):
+    return render(request, "shawarma/contact.html")
+
+
+def blog(request):
+    return render(request, "shawarma/blog.html")

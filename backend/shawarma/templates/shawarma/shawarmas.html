@@ -1,3 +1,9 @@
+{% extends 'shawarma/base.html' %}
+
+{% block 'content' %} 
+{% load widget_tweaks %}
+
+
 <h1>Order Shawarmas </h1>
 <h2>{{  note }} </h2>
 
@@ -12,3 +18,5 @@
     {% endfor %}
     <input type="submit" value="Order Shawarmas">
 </form>
+
+{% endblock %}
