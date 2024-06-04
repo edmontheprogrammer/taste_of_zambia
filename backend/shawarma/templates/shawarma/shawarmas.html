@@ -1,22 +1,21 @@
-{% extends 'shawarma/base.html' %}
+{% extends 'shawarma/base.html' %} 
+{% block 'content' %}
+ {% load widget_tweaks %}
 
-{% block 'content' %} 
-{% load widget_tweaks %}
+<h1>Order Shawarmas</h1>
+<h2>{{ note }}</h2>
 
+<div class="form-group">
+<form action="{% url 'shawarmas' %}" method="post" novalidate>
+  {% csrf_token %} 
+  {{ formset.management_form }}
+  {% for form in formset %} 
+  {{ form.as_p }}
+  <br />
+  {% endfor %}
 
-<h1>Order Shawarmas </h1>
-<h2>{{  note }} </h2>
-
-<form  action="{% url 'shawarmas' %}" method="post">
-    {% csrf_token %}
-    {{ formset.management_form }}
-
-    {% for form in formset %}
-        {{ form }}
-        <br/>
-        <br/>
-    {% endfor %}
-    <input type="submit" value="Order Shawarmas">
+  
+  <input type="submit" value="Order Shawarmas" />
 </form>
-
+</div>
 {% endblock %}

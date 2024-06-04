@@ -79,7 +79,3 @@ def about(request):
 
 def contact(request):
     return render(request, "shawarma/contact.html")
-
-
-def blog(request):
-    return render(request, "shawarma/blog.html")

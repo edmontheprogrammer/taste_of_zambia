@@ -69,6 +69,7 @@ from .models import Shawarma, Size
 class ShawarmaForm(forms.ModelForm):
 
     class Meta:
+
         model = Shawarma
         # "fields" is used displaying the followling fields from the "Shawarma" model
         # class that we created in the .model file.
@@ -80,7 +81,12 @@ class ShawarmaForm(forms.ModelForm):
         }
         # "widgets" is used for customizing widgets for the different fields we
         # have in the form fields.
-        # widgets = {'size': forms.CheckboxSelectMultiple}
+        widgets = {
+            'ingredient1': forms.TextInput(attrs={'class': 'form-control'}),
+            'ingredient2': forms.TextInput(attrs={'class': 'form-control'}),
+            'size': forms.Select(attrs={'class':'form-control'}),
+            'special_request': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Special requests only. Not required. This can be left blank.'})      
+            }
 
 
 class MultipleShawarmaForm(forms.Form):

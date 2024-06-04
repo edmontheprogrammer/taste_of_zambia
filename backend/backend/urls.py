@@ -26,5 +26,4 @@ urlpatterns = [
     path("order/<int:pk>", views.edit_order, name="edit-order"),
     path("about/", views.about, name="about"),
     path("contact", views.contact, name="contact"),
-    path("blog", views.blog, name="blog"),
 ]
