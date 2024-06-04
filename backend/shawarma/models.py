@@ -18,7 +18,7 @@ class Size(models.Model):
 class Shawarma(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=15)
     ingredient1 = models.CharField(max_length=100)
     ingredient2 = models.CharField(max_length=100)
     # Linking the "Shawarma" model to the "Size" model
@@ -28,6 +28,8 @@ class Shawarma(models.Model):
     # In other words, Both objects in the "Shawaram" model and the "Size" model
     # will be removed from the database.
     size = models.ForeignKey(Size, on_delete=models.CASCADE)
+    special_request = models.CharField(
+        max_length=300, null=True, blank=True)
 
     def __str__(self):
         return self.ingredient1
