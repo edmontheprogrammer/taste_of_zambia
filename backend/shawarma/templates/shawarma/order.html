@@ -40,27 +40,29 @@
     {% comment %} # "enctype='multipart/form-data' " is requried to allow users to
     unload files such as "images", # "photos", "word documents", "PDF documents" and
     others on the form {% endcomment %}
-    <form action="{% url 'order' %}" method="post" novalidate>
-      {% csrf_token %} 
-      {% for field in shawarmaform %}
-          <div class="form-group"> 
-              {{ field.errors }}
-              {{ field.label_tag }}
-              {% render_field field class="form-control" %}
-          </div>
-        {% endfor %}
-      <input type="submit" value="Order Shawarma" />
-    </form>
 
-      <br />
-      <br />
 
-      Want more than one shawarma?
-      <form action="{% url "shawarmas" %}" method="get">
-        {{ multiple_form.as_p  }}
-        <input type="submit" value="Get Shawarmas">
-      </form>
+    <div class="form-group">
+        <form action="{% url 'order' %}" method="post" novalidate>
+        
+          {% csrf_token %} 
+          {% comment %} {% for field in shawarmaform %}
+              <div class="form-group"> 
+                  {{ field.errors }}
+                  {{ field.label_tag }}
+                  {% render_field field class="form-control" %}
+              </div>
+          {% endfor %} {% endcomment %}
 
+            {{ shawarmaform.as_p }}
+            <br/>
+          <input type="submit" value="Order Shawarma" />
+        </form>
+  </div>
+
+    </div>
+      <br/>
+      <br/>
       <br/>
       <br/>
       <br/>
