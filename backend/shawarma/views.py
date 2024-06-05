@@ -19,9 +19,7 @@ def order(request):
             # This line is getting the primary key for the created shawarma, "created_shawarma"
             created_shawarma_pk = created_shawarma.id
             filled_form = ShawarmaForm()
-            note = "Thanks for ordering! Your %s %s and %s shawarma is on its way!" % (filled_form.cleaned_data['size'],
-                                                                                       filled_form.cleaned_data['ingredient1'],
-                                                                                       filled_form.cleaned_data['ingredient2'],)
+            note = "Thanks for ordering! Your  shawarma is on its way!"
             filled_form = ShawarmaForm()
         else:
             note = "Shawarma has failed. Try again."
