@@ -25,5 +25,8 @@ urlpatterns = [
     path("order/<int:pk>", views.edit_order, name="edit-order"),
     path("about/", views.about, name="about"),
     path("contact", views.contact, name="contact"),
+<<<<<<< HEAD
     
+=======
+>>>>>>> 1b54215665d933b706dd41c477efdd6f847a3211
 ]
