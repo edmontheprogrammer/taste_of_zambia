@@ -24,7 +24,7 @@
 
 
       {% block 'content' %} 
-      {% load widget_tweaks %}
+
 
    
 
@@ -41,7 +41,6 @@
     unload files such as "images", # "photos", "word documents", "PDF documents" and
     others on the form {% endcomment %}
 
-<<<<<<< HEAD
 
     <div class="form-group">
         <form action="{% url 'order' %}" method="post" novalidate>
@@ -64,38 +63,6 @@
     </div>
       <br/>
       <br/>
-=======
-
-    <div class="form-group">
-        <form action="{% url 'order' %}" method="post" novalidate>
-        
-          {% csrf_token %} 
-          {% comment %} {% for field in shawarmaform %}
-              <div class="form-group"> 
-                  {{ field.errors }}
-                  {{ field.label_tag }}
-                  {% render_field field class="form-control" %}
-              </div>
-          {% endfor %} {% endcomment %}
-
-            {{ shawarmaform.as_p }}
-            <br/>
-          <input type="submit" value="Order Shawarma" />
-        </form>
-  </div>
-      <br />
-      <br />
-
-      Want more than one shawarma?
-      <form action="{% url "shawarmas" %}" method="get">
-        <br />
-        {{ multiple_form.as_p  }}
-            <br />
-        <input type="submit" value="Get Shawarmas">
- 
-      </form>
-    </div>
->>>>>>> 1b54215665d933b706dd41c477efdd6f847a3211
       <br/>
       <br/>
       <br/>

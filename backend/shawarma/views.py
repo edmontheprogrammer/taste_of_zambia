@@ -1,8 +1,13 @@
 
 from django.shortcuts import render
 from .forms import ShawarmaForm
-from .models import Shawarma
+
 # Create your views here.
+# Note 1: The "viewsets" base class provides the implementation for CRUD operations by default
+# This code specifices the "serializer_class" and the "queryset"
+from rest_framework import viewsets
+from .serializers import ShawarmaSerializer
+from .models import Shawarma
 
 
 def home(request):
@@ -54,3 +59,10 @@ def about(request):
 
 def contact(request):
     return render(request, "shawarma/contact.html")
+
+
+# Creating the View for the APIs and the Shawarma model
+
+class ShawarmaView(viewsets.ModelViewSet):
+    serializer_class = ShawarmaSerializer
+    queryset = Shawarma.objects.all()
