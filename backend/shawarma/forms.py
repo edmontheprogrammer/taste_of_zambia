@@ -82,7 +82,6 @@ class ShawarmaForm(forms.ModelForm):
         # "widgets" is used for customizing widgets for the different fields we
         # have in the form fields.
         widgets = {
-<<<<<<< HEAD
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
@@ -91,13 +90,6 @@ class ShawarmaForm(forms.ModelForm):
             'size': forms.Select(attrs={'class': 'form-control'}),
             'special_request': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Special requests only. Not required. This can be left blank.'})
         }
-=======
-            'ingredient1': forms.TextInput(attrs={'class': 'form-control'}),
-            'ingredient2': forms.TextInput(attrs={'class': 'form-control'}),
-            'size': forms.Select(attrs={'class':'form-control'}),
-            'special_request': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Special requests only. Not required. This can be left blank.'})      
-            }
->>>>>>> 1b54215665d933b706dd41c477efdd6f847a3211
 
 
 class MultipleShawarmaForm(forms.Form):

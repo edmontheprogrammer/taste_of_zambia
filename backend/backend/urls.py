@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from shawarma import views
+from rest_framework import routers
+from shawarma import views
+
+router = routers.DefaultRouter()
+router.register(r'shawarmas', views.ShawarmaView, 'shawarmas')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,8 +30,23 @@ urlpatterns = [
     path("order/<int:pk>", views.edit_order, name="edit-order"),
     path("about/", views.about, name="about"),
     path("contact", views.contact, name="contact"),
-<<<<<<< HEAD
-    
-=======
->>>>>>> 1b54215665d933b706dd41c477efdd6f847a3211
+
+    # This is the path for the API
+    # This code specifies the URL path for the API. 
+    # This was the final step that completes the building of the API.
+    # You can now perform CRUD operations on the Shawarma model. 
+    # The router class allows you to make the following queries:
+    #
+    #
+    # /shawarmas/ - returns a list of all the Shawarmas items. 
+    # CREATE and READ operations can be performed here.
+    # /shawarmas/id - returns a single Todo item using the id primary key. 
+    # UPDATE and DELETE operations can be performed here.
+    # 
+    # Let’s restart the server:
+    #   " python manage.py runserver "
+    # 
+    # Navigate to http://localhost:8000/api/shawarmas in your web browser:
+    path('api/', include(router.urls)),
+
 ]

@@ -41,7 +41,9 @@ INSTALLED_APPS = [
 
     # Installed Apps by Edmon
     "shawarma",
-    'widget_tweaks',
+    'corsheaders',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
+    # instlaled Middlewares by Edmon
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -142,3 +147,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # 1640 X 686
+
+
+# Additional Settings Added by Edmon
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173'
+]
